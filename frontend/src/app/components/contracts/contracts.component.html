@@ -1,0 +1,58 @@
+<div>
+
+
+
+  <br>
+  <mat-card>
+    <button mat-raised-button color="primary" matBadge="+1" matBadgePosition="before" matBadgeColor="accent" routerLink="/create">Create
+      a New Contract</button>
+    <br><br>
+    <mat-divider></mat-divider>
+    <br>
+    <table mat-table [dataSource]="contracts">
+      <ng-container matColumnDef="titulliProkurimit">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let element"> {{element.titulliProkurimit}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataPublikimit">
+        <th mat-header-cell *matHeaderCellDef>Announcement Date</th>
+        <td mat-cell *matCellDef="let element">{{element.dataPublikimit}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataNenshkrimit">
+        <th mat-header-cell *matHeaderCellDef>Assignment Date</th>
+        <td mat-cell *matCellDef='let element'>{{element.dataNenshkrimit}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="vleraFillestare">
+        <th mat-header-cell *matHeaderCellDef>Initial Cost</th>
+        <td mat-cell *matCellDef='let element'>{{element.vleraFillestare}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="vleraFinale">
+        <th mat-header-cell *matHeaderCellDef>Final Cost</th>
+        <td mat-cell *matCellDef='let element'>{{element.vleraFinale}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="drejtoria">
+        <th mat-header-cell *matHeaderCellDef>Department</th>
+        <td mat-cell *matCellDef='let element'>{{element.drejtoria}}</td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
+        <td mat-cell *matCellDef='let element' class="mat-column-right">
+          <button mat-button color="primary" (click)="editContract(element._id)">Edit</button>
+          <button mat-button color="warn" (click)="deleteContract(element._id)">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card>
+</div>

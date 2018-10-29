@@ -1,0 +1,47 @@
+<div>
+  <br>
+  <mat-card>
+    <section class='mat-typography'>
+      <h3>Create a New Contract</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]='createForm' class='create-form'>
+
+      <mat-form-field class='field-full-width'>
+        <input matInput placeholder='Procurement Title' formControlName='titulliProkurimit' #titulliProkurimit>
+      </mat-form-field>
+
+      <mat-form-field class='field-full-width'>
+        <input matInput [matDatepicker]="picker1" placeholder='Publication Date' formControlName='dataPublikimit'
+          #dataPublikimit>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class='field-full-width'>
+        <input matInput [matDatepicker]="picker" placeholder='Assignment Date' formControlName='dataNenshkrimit'
+          #dataNenshkrimit>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class='field-full-width'>
+        <input matInput placeholder='Initial Cost' formControlName='vleraFillestare' #vleraFillestare>
+      </mat-form-field>
+
+      <mat-form-field class='field-full-width'>
+        <input matInput placeholder='Final Cost' formControlName='vleraFinale' #vleraFinale>
+      </mat-form-field>
+
+      <mat-form-field class='field-full-width'>
+        <input matInput placeholder='Department' formControlName='drejtoria' #drejtoria>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color='warn' routerLink="/contracts">Back</button>
+      <button type='submit' (click)='addContract(titulliProkurimit.value, dataPublikimit.value, dataNenshkrimit.value, vleraFillestare.value, vleraFinale.value, drejtoria.value)'
+        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color='primary'> Save</button>
+    </form>
+  </mat-card>
+</div>
